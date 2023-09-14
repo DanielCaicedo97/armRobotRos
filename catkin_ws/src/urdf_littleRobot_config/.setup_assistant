@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: little_robot_2023
+    relative_path: urdf/little_robot_2023.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/little_robot_2023.srdf
+  CONFIG:
+    author_name: Maquinnovacion
+    author_email: maquinnovacion@gmail.com
+    generated_timestamp: 1694624282

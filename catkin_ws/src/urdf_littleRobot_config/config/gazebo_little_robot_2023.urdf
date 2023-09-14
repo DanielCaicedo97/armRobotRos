@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="little_robot_2023">
+    <link name="base_link">
+        <inertial>
+            <origin xyz="2.9701E-11 0.023639 0.012305" rpy="0 0 0" />
+            <mass value="0.07779" />
+            <inertia ixx="0.00012072" ixy="5.3427E-14" ixz="3.2492E-15" iyy="5.5344E-05" iyz="-5.4001E-09" izz="0.00017528" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://little_robot_2023/meshes/base_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.75294 0.75294 0.75294 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://little_robot_2023/meshes/base_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="link_1">
+        <inertial>
+            <origin xyz="-1.0782E-16 0.017788 -2.5424E-06" rpy="0 0 0" />
+            <mass value="0.032972" />
+            <inertia ixx="2.097E-05" ixy="3.304E-21" ixz="3.5145E-22" iyy="2.4394E-05" iyz="6.1578E-21" izz="2.1467E-05" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://little_robot_2023/meshes/link_1.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.75294 0.75294 0.75294 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://little_robot_2023/meshes/link_1.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint_1" type="revolute">
+        <origin xyz="0 0 0.042" rpy="1.5708 0 1.5708" />
+        <parent link="base_link" />
+        <child link="link_1" />
+        <axis xyz="0 1 0" />
+        <limit lower="-1.571" upper="1.571" effort="0" velocity="0" />
+    </joint>
+    <link name="link_2">
+        <inertial>
+            <origin xyz="0.05675 2.7756E-16 0.0027959" rpy="0 0 0" />
+            <mass value="0.031129" />
+            <inertia ixx="1.8688E-06" ixy="-1.0685E-13" ixz="-3.0119E-21" iyy="2.5808E-05" iyz="-6.9014E-22" izz="2.6912E-05" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://little_robot_2023/meshes/link_2.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.75294 0.75294 0.75294 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://little_robot_2023/meshes/link_2.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint_2" type="revolute">
+        <origin xyz="0 0.0845 0" rpy="0 0 0" />
+        <parent link="link_1" />
+        <child link="link_2" />
+        <axis xyz="0 0 1" />
+        <limit lower="-1.571" upper="1.571" effort="0" velocity="0" />
+    </joint>
+    <link name="link_3">
+        <inertial>
+            <origin xyz="0.04247 0.0012743 0.00050505" rpy="0 0 0" />
+            <mass value="0.015925" />
+            <inertia ixx="2.9309E-06" ixy="-1.8461E-21" ixz="-1.6956E-21" iyy="7.613E-06" iyz="4.3843E-08" izz="5.3893E-06" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://little_robot_2023/meshes/link_3.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.75294 0.75294 0.75294 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://little_robot_2023/meshes/link_3.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint_3" type="revolute">
+        <origin xyz="0.1135 0 0" rpy="0 0 0" />
+        <parent link="link_2" />
+        <child link="link_3" />
+        <axis xyz="0 0 1" />
+        <limit lower="-1.571" upper="1.571" effort="0" velocity="0" />
+    </joint>
+    <transmission name="trans_joint_1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_1">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_1_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_2">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_2_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint_3">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint_3">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint_3_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <gazebo>
+        <plugin name="gazebo_ros_control">
+            <robotNamespace>/</robotNamespace>
+        </plugin>
+    </gazebo>
+</robot>
+
